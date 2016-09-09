@@ -8,10 +8,27 @@ import {
 } from 'recompose'
 
 import Radium from 'radium'
-import { addStyle } from './hocs'
+import {
+  addStyle,
+  getTheme,
+  themeStyle,
+} from './hocs'
+
+const mapThemeToStyle = ({
+  color,
+  number,
+  string
+}) => ({
+  ...(color.keyColor &&
+    {backgroundColor: color.keyColor} || {}
+  ),
+  color: color.textLight,
+  borderRadius: number.buttonRadius,
+  fontFamily: string.mainFontFamily,
+})
 
 const style = {
-  backgroundColor: '#3f8bae',
+  backgroundColor: 'purple',
   borderWidth: 0,
   borderStyle: 'solid',
   boxSizing: 'border-box',
@@ -34,6 +51,8 @@ const style = {
 }
 
 const enhance = compose(
+  getTheme,
+  themeStyle(mapThemeToStyle),
   addStyle(style),
   setDisplayName('Button'),
   defaultProps({element: 'button'}),
