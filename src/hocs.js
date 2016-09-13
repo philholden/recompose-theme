@@ -9,6 +9,10 @@ export const getTheme = getContext({
   theme: PropTypes.object,
 })
 
+export const getButtonGroup = getContext({
+  buttonGroup: PropTypes.bool,
+})
+
 export const themeStyle = mapThemeToStyle => mapProps(
   props => {
     const { theme, style } = props

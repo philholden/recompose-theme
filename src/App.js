@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from './button'
+import ButtonGroup from './button-group'
 import theme from './my-theme'
 
 import {
@@ -28,6 +29,13 @@ class App extends Component {
         >
           Click me
         </Button>
+        <div style={{background: 'white'}}>
+          <ButtonGroup isVertical>
+            <Button>Click me</Button>
+            <Button>Click me</Button>
+            <Button>Click me</Button>
+          </ButtonGroup>
+        </div>
         <label>keyColor</label>
         {' '}
         <input
@@ -67,6 +75,22 @@ class App extends Component {
               number: {
                 ...theme.number,
                 buttonRadius: e.target.value
+              }
+            })
+          }}
+        /><br/>
+
+        <label>buttonGroupSpace</label>
+        {' '}
+        <input
+          type="number"
+          value={theme.number.buttonGroupSpace}
+          onChange={(e) => {
+            updateTheme({
+              ...theme,
+              number: {
+                ...theme.number,
+                buttonGroupSpace: e.target.value
               }
             })
           }}

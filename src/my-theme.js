@@ -4,7 +4,8 @@ export default {
     textLight: '#fff',
   },
   number: {
-    buttonRadius: 5
+    buttonRadius: 5,
+    buttonGroupSpace: 6,
   },
   string: {
     mainFontFamily: 'sans-serif'

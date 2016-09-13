@@ -10,6 +10,7 @@ import {
 import Radium from 'radium'
 import {
   addStyle,
+  getButtonGroup,
   getTheme,
   themeStyle,
 } from './hocs'
@@ -18,9 +19,14 @@ const mapThemeToStyle = ({
   color,
   number,
   string
+}, {
+  buttonGroup,
 }) => ({
   ...(color.keyColor &&
     {backgroundColor: color.keyColor} || {}
+  ),
+  ...(buttonGroup &&
+    {margin: (number.buttonGroupSpace || 6) * 1} || {}
   ),
   color: color.textLight,
   borderRadius: number.buttonRadius,
@@ -52,6 +58,7 @@ const style = {
 
 const enhance = compose(
   getTheme,
+  getButtonGroup,
   themeStyle(mapThemeToStyle),
   addStyle(style),
   setDisplayName('Button'),
